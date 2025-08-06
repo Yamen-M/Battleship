@@ -37,7 +37,6 @@ describe("Gameboard", () => {
         const ship1 = new Ship(3);
         const ship2 = new Ship(3);
 
-        // Place the first ship
         gameboard.placeShip(ship1, 0, 0, true);
 
         // Attempt to place the second ship overlapping with the first

@@ -5,6 +5,7 @@ export default class Gameboard {
     this.gridSize = 10;
     this.ships = [];
     this.missedAttacks = new Set();
+    this.hits = new Set();
   }
 
   placeShip(ship, x, y, isHorizontal) {
@@ -40,8 +41,15 @@ export default class Gameboard {
     this.ships.push({ ship, x, y, isHorizontal });
   }
 
-  recieveAttack(x, y) {
-    if( this.missedAttacks.has(`${x},${y}`)) return false;
+  hasBeenAttacked(x, y) {
+    const coord = `${x},${y}`;
+    return this.hits.has(coord) || this.missedAttacks.has(coord);
+  }
+
+  receiveAttack(x, y) {
+    const coord = `${x},${y}`;
+    
+    if (this.hasBeenAttacked(x, y)) return false;
 
     for (const { ship, x: shipX, y: shipY, isHorizontal } of this.ships) {
       for (let i = 0; i < ship.length; i++) {
@@ -50,6 +58,7 @@ export default class Gameboard {
 
         if (coordX === x && coordY === y) {
           ship.hit();
+          this.hits.add(coord);
           if (ship.isSunk()) {
             ship.sunk = true;
           }
@@ -57,7 +66,7 @@ export default class Gameboard {
         }
       }
     }
-    this.missedAttacks.add(`${x},${y}`);
+    this.missedAttacks.add(coord);
     return false;
   }
 
