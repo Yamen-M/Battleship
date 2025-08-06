@@ -222,6 +222,12 @@ const dom = (() => {
 
   const handlePlayerAttack = (x, y) => {
     if (isGameOver) return;
+
+    if (game.players[0].gameboard.ships.length < 5) {
+      alert("⚠️ Place all your ships before attacking the enemy!");
+      return;
+    }
+
     clearTimeout(computerMoveTimeout);
 
     const computerGameboard = game.players[1].gameboard;
