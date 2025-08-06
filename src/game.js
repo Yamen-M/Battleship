@@ -21,19 +21,19 @@ const game = (() => {
   };
 
   const placeShips = (gameboard) => {
-    const shipLengths = [5, 4, 3, 3, 2]; 
-    
+    const shipLengths = [5, 4, 3, 3, 2];
+
     shipLengths.forEach((length) => {
       const ship = new Ship(length);
       let placed = false;
       let attempts = 0;
-      
+
       while (!placed && attempts < 100) {
         // Random position and orientation
         const x = Math.floor(Math.random() * 10);
         const y = Math.floor(Math.random() * 10);
         const isHorizontal = Math.random() < 0.5;
-        
+
         try {
           gameboard.placeShip(ship, x, y, isHorizontal);
           placed = true;
@@ -42,7 +42,7 @@ const game = (() => {
           attempts++;
         }
       }
-      
+
       // Fallback if random fails
       if (!placed) {
         const y = shipLengths.indexOf(length) * 2;
@@ -72,11 +72,18 @@ const game = (() => {
     return players.some((player) => player.gameboard.allShipsSunk());
   };
 
+  const restartGame = () => {
+    players = [];
+    currentPlayerIndex = 0;
+    initializeGame();
+  };
+
   return {
     initializeGame,
     switchTurn,
     makeComputerMove,
     checkGameEnd,
+    restartGame,
     get players() {
       return players;
     },

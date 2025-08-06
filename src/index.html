@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battleship Game</title>
+    <title>🚢 BATTLESHIP 🚢</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚢</text></svg>">
 </head>
 <body>
-    <h1>BATTLESHIP</h1>
+    <div class="retro-header">
+        <h1>BATTLESHIP</h1>
+        <div class="subtitle">⚡ NAVAL COMBAT SIMULATOR ⚡</div>
+    </div>
+    
     <div id="ship-selection"></div>
+    
     <div class="boards-container">
-        <div class="board-container">
-            <h2>Your Fleet</h2>
-            <div id="player-board" class="board"></div>
+        <div class="board-container player-side">
+            <h2>🛡️ YOUR FLEET 🛡️</h2>
+            <div class="board-wrapper">
+                <div id="player-board" class="board"></div>
+            </div>
         </div>
-        <div class="board-container">
-            <h2>Enemy Waters</h2>
-            <div id="computer-board" class="board"></div>
+        
+        <div class="board-container enemy-side">
+            <h2>💀 ENEMY WATERS 💀</h2>
+            <div class="board-wrapper">
+                <div id="computer-board" class="board"></div>
+            </div>
         </div>
     </div>
+    
+    <div class="retro-footer">
+        <div class="status-display">
+            <span class="status-text">&copy;2025 Yamen Morcel. All rights reserved.</span>
+        </div>
+    </div>
+    
     <script type="module" src="./main.js"></script>
 </body>    
 

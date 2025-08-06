@@ -1,4 +1,4 @@
-import Ship from './ship.js';
+import Ship from "./ship.js";
 
 export default class Gameboard {
   constructor() {
@@ -48,7 +48,7 @@ export default class Gameboard {
 
   receiveAttack(x, y) {
     const coord = `${x},${y}`;
-    
+
     if (this.hasBeenAttacked(x, y)) return false;
 
     for (const { ship, x: shipX, y: shipY, isHorizontal } of this.ships) {
