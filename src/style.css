@@ -528,6 +528,88 @@ h1::before {
   animation: gameOverPulse 1s ease-in-out infinite alternate;
 }
 
+.github-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+github-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border: 2px solid #00ff41;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ff41;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 10px rgba(0, 255, 65, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.github-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 65, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.github-icon svg {
+  width: 28px;
+  height: 28px;
+  z-index: 1;
+  position: relative;
+}
+
+.github-link:hover .github-icon {
+  background: linear-gradient(145deg, #001a00 0%, #003300 50%, #001a00 100%);
+  border-color: #40ff80;
+  color: #40ff80;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.8), 0 4px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.github-link:hover .github-icon::before {
+  left: 100%;
+}
+
+.github-link:active .github-icon {
+  transform: translateY(0) scale(1);
+}
+
+@keyframes githubGlow {
+  0%,
+  100% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 10px rgba(0, 255, 65, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 15px rgba(0, 255, 65, 0.6);
+  }
+}
+
+.github-icon {
+  animation: githubGlow 3s ease-in-out infinite;
+}
+
 @keyframes gameOverPulse {
   from {
     box-shadow: 0 0 30px rgba(0, 255, 65, 0.8),
@@ -546,7 +628,7 @@ h1::before {
 
   body {
     padding: 10px;
-    padding-bottom: 80px; /* Adjust for mobile */
+    padding-bottom: 80px;
   }
 
   .boards-container {
@@ -575,5 +657,19 @@ h1::before {
   .status-text {
     font-size: 0.8rem;
     letter-spacing: 1px;
+  }
+  .github-link {
+    top: 15px;
+    left: 15px;
+  }
+
+  .github-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .github-icon svg {
+    width: 22px;
+    height: 22px;
   }
 }

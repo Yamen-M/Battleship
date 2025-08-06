@@ -34,4 +34,10 @@ describe("Game", () => {
     });
     expect(game.checkGameEnd()).toBe(true);
   });
+
+  it("restarts the game correctly", () => {
+    game.restartGame();
+    expect(game.players[0].gameboard.ships).toHaveLength(0);
+    expect(game.currentPlayerIndex).toBe(0);
+  });
 });
